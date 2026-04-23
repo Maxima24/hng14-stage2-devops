@@ -1,14 +1,45 @@
-# ===========================
-# Python
-# ===========================
+# =========================
+# JavaScript / Node
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Byte-compiled / optimized / DLL files
+# Build outputs
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Bundlers
+.cache/
+.parcel-cache/
+.vite/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+
+# =========================
+# Python
+# =========================
 __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
 
 # Distribution / packaging
 .Python
@@ -23,22 +54,15 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
 # PyInstaller
 *.manifest
 *.spec
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
+# Unit test / coverage
 htmlcov/
 .tox/
 .nox/
@@ -49,235 +73,20 @@ nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# poetry
-poetry.lock
-
-# pdm
-.pdm.toml
-
-# PEP 582
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# ===========================
-# Node.js
-# ===========================
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.pnpm-debug.log*
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional stylelint cache
-.stylelintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
-
-# parcel-bundler cache
-.cache
-.parcel-cache
-
-# Next.js build output
-.next
-out
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-.output
-
-# Gatsby files
-.cache/
-public
-
-# Storybook build outputs
-.storybook-out
-storybook-static
-
-# Temporaries
-*.swp
-*.swo
-*~
-.DS_Store
-
-# Vite
-.vite
-
-# Turborepo
-.turbo
-
-# ===========================
-# Both (common)
-# ===========================
-
-# IDEs and editors
+# =========================
+# IDE / OS
+# =========================
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# OS generated files
 Thumbs.db
-ehthumbs.db
-Desktop.ini
 
-# Coverage reports (general)
-.coverage
-coverage/
-*.cover
-
-# Secrets and sensitive data
-*.pem
-*.key
-*.crt
-*.p12
-.secrets/
-.env.local
-.env.*.local
-
-# Debug logs
-debug.log
-
-# Cache directories
-.cache/
-*.cache
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-*.temp
-
-# Backup files
-*.bak
-*.backup
-*.old
-
-# Local configuration files
-config.local.*
-*.local.json
-*.local.yaml
+# =========================
+# Misc
+# =========================
+*.tgz
+*.zip
