@@ -191,12 +191,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create env files
+       - name: Create env files
         run: |
           echo "REDIS_HOST=redis" > api/.env
           echo "REDIS_HOST=redis" > worker/.env
           echo "API_URL=http://api:8000" > frontend/.env
           echo "PORT=3000" >> frontend/.env
+          echo "API_PORT=${{ secrets.API_PORT }}" > .env
+          echo "FRONTEND_PORT=${{ secrets.FRONTEND_PORT }}" >> .env
 
       - name: Start full stack
         run: docker compose up -d --build
@@ -263,6 +265,8 @@ jobs:
           echo "REDIS_HOST=redis" > worker/.env
           echo "API_URL=http://api:8000" > frontend/.env
           echo "PORT=3000" >> frontend/.env
+          echo "API_PORT=${{ secrets.API_PORT }}" > .env
+          echo "FRONTEND_PORT=${{ secrets.FRONTEND_PORT }}" >> .env
 
       - name: Build new images
         run: docker compose build
