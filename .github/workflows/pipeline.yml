@@ -271,29 +271,40 @@ jobs:
       - name: Build new images
         run: docker compose build
 
+      - name: Start initial stack
+        run: docker compose up -d --build
+
       - name: Rolling update API
         run: |
           OLD_CONTAINER=$(docker ps -q --filter "name=api" | head -1)
 
-          docker compose up -d --no-deps --scale api=2 --no-recreate api
+          # build new image without starting
+          docker compose build api
 
-          echo "Waiting for new API container to be healthy..."
-          NEW_CONTAINER=$(docker ps -q --filter "name=api" | grep -v $OLD_CONTAINER | head -1)
+          # start new container without port binding conflict
+          docker create --name api-new \
+            --network hng14-stage2-devops_internal \
+            --env-file api/.env \
+            ${{ env.REGISTRY }}/api:latest
 
+          docker start api-new
+
+          # wait for health check
           for i in $(seq 1 12); do
-            if docker inspect --format='{{.State.Health.Status}}' $NEW_CONTAINER 2>/dev/null | grep -q "healthy"; then
-              echo "New container is healthy, stopping old container"
+            if docker inspect --format='{{.State.Health.Status}}' api-new 2>/dev/null | grep -q "healthy"; then
+              echo "New container healthy, swapping..."
               docker stop $OLD_CONTAINER
               docker rm $OLD_CONTAINER
+              docker rename api-new hng14-stage2-devops-api-1
               exit 0
             fi
-            echo "Attempt $i/12 - waiting for health check..."
+            echo "Attempt $i/12..."
             sleep 5
           done
 
-          echo "Health check failed within 60s, aborting — old container still running"
-          docker stop $NEW_CONTAINER
-          docker rm $NEW_CONTAINER
+          echo "Health check failed, aborting"
+          docker stop api-new
+          docker rm api-new
           exit 1
 
       - name: Rolling update Worker
