@@ -191,7 +191,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-       - name: Create env files
+      - name: Create env files
         run: |
           echo "REDIS_HOST=redis" > api/.env
           echo "REDIS_HOST=redis" > worker/.env
