@@ -104,6 +104,8 @@ jobs:
         with:
           context: ./api
           push: true
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/api:latest
+          cache-to: type=inline
           tags: |
             ${{ env.REGISTRY }}/api:${{ github.sha }}
             ${{ env.REGISTRY }}/api:latest
